@@ -72,7 +72,7 @@ class CheckoutSolutionTest {
         Arguments.of("EEBBFFFFFF", 150), //conbination of EEBB plus 6Fs
         Arguments.of("HHHHH", 45), // 5H for 45
         Arguments.of("HHHHHHHHHH", 80), //10H 80
-        Arguments.of("KK", 150),
+        Arguments.of("KK", 120),
         Arguments.of("NNNM", 120),
         Arguments.of("PPPPP", 200), //5P FOR 200
         Arguments.of("QQQ", 80), //3Q FOR 80
@@ -85,9 +85,12 @@ class CheckoutSolutionTest {
         Arguments.of("VVVVVV", 260), // 3v for 130+ 3v for 130
 
 
-        Arguments.of("STX", 90), // any 3 for 90
-        Arguments.of("SXY", 90), // ANY 3 FOR 90
-        Arguments.of("VVVVVV", 260), // 3v for 130+ 3v for 130
+        Arguments.of("STX", 45),
+        Arguments.of("SXY", 45),
+        Arguments.of("STXYZ", 45 + 37), // 3 FOR 45 + remaining x(17) Y(20)
+        Arguments.of("SSS", 45),
+        Arguments.of("SST", 60), // less than 3 -> no offer
+        Arguments.of("XYZXYZ", 490), // 6 items = 2x(3 for 45)
 
 
     )
@@ -101,3 +104,4 @@ class CheckoutSolutionTest {
     }
 
 }
+
