@@ -26,26 +26,26 @@ class CheckoutSolutionTest {
         Arguments.of("D", 15),
         Arguments.of("E", 40),
         Arguments.of("F", 10),
-        Arguments.of("G", 10),
+        Arguments.of("G", 20),
         Arguments.of("H", 10),
-        Arguments.of("I", 10),
-        Arguments.of("J", 10),
-        Arguments.of("K", 10),
-        Arguments.of("L", 10),
-        Arguments.of("M", 10),
-        Arguments.of("N", 10),
+        Arguments.of("I", 35),
+        Arguments.of("J", 60),
+        Arguments.of("K", 80),
+        Arguments.of("L", 90),
+        Arguments.of("M", 15),
+        Arguments.of("N", 40),
         Arguments.of("O", 10),
-        Arguments.of("P", 10),
-        Arguments.of("Q", 10),
-        Arguments.of("R", 10),
-        Arguments.of("S", 10),
-        Arguments.of("T", 10),
-        Arguments.of("U", 10),
-        Arguments.of("V", 10),
-        Arguments.of("W", 10),
-        Arguments.of("X", 10),
+        Arguments.of("P", 50),
+        Arguments.of("Q", 30),
+        Arguments.of("R", 50),
+        Arguments.of("S", 30),
+        Arguments.of("T", 20),
+        Arguments.of("U", 40),
+        Arguments.of("V", 50),
+        Arguments.of("W", 20),
+        Arguments.of("X", 90),
         Arguments.of("Y", 10),
-        Arguments.of("Z", 10)
+        Arguments.of("Z", 50)
 
 
     )
@@ -72,6 +72,21 @@ class CheckoutSolutionTest {
         Arguments.of("EEBBFFFFFF", 150), //conbination of EEBB plus 6Fs
 
 
+        Arguments.of("HHHHH", 45), // 5H for 45
+        Arguments.of("HHHHHHHHHH", 80), //10H 80
+        Arguments.of("KK", 150),
+        Arguments.of("NNNM", 120),
+        Arguments.of("PPPPP", 200), //5P FOR 200
+        Arguments.of("QQQ", 80), //3Q FOR 80
+        Arguments.of("RRRQ", 150), // 3R GET ONE Q FREE
+        Arguments.of("UUUU", 120), // 4U GET ONE U FREE
+        Arguments.of("VV", 90), // 2V FOR 90
+        Arguments.of("VVV", 130), // 3V FOR 130
+        Arguments.of("VVVV", 180), // 3V FOR 130+50
+        Arguments.of("VVVVV", 220), // EU GET ONE U FREE
+        Arguments.of("VVVVVV", 260), // EU GET ONE U FREE
+
+
     )
 
 
@@ -83,3 +98,4 @@ class CheckoutSolutionTest {
     }
 
 }
+
