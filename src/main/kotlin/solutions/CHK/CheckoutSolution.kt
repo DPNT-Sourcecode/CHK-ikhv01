@@ -113,11 +113,10 @@ class CheckoutSolution {
         val threeBundles = remainderAfterFive / 3
         val remainder = remainderAfterFive % 3
         return fiveBundles * 200 + threeBundles * 130 + remainder * 50
-
-
     }
 
 
 }
+
 
 
