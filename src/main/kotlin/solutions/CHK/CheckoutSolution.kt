@@ -120,16 +120,16 @@ class CheckoutSolution {
 
         applyFreeBFromE(grouped)
         applyFreeFFor2F(grouped)
+        return calculateTotal(grouped)
 
-        return grouped.entries.sumOf { (sku, count) ->
-            when (sku) {
-                Sku.A -> calculateOfferForA(count)
-                Sku.B -> calculateOffer(count, 2, 45, sku.price)
-                else -> count * sku.price
-            }
+    }
 
+    fun calculateTotal(grouped: MutableMap<Sku, Int>): Int = grouped.entries.sumOf { (sku, count) ->
+        when (sku) {
+            Sku.A -> calculateOfferForA(count)
+            Sku.B -> calculateOffer(count, 2, 45, sku.price)
+            else -> count * sku.price
         }
-
     }
 
     private fun applyFreeFFor2F(grouped: MutableMap<Sku, Int>) {
@@ -166,11 +166,5 @@ class CheckoutSolution {
     }
 
 }
-
-
-
-
-
-
 
 
