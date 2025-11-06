@@ -32,25 +32,39 @@ checkout(string) -> integer
  - @return = an integer representing the total checkout value of the items
  */
 
-enum class Unit(val price: Int) {
+enum class Sku(val price: Int) {
     A(50),
     B(30),
     C(20),
-    D(15)
+    D(15);
+
+    companion object {
+        fun from(char: Char): Sku? = entries.find { it.name.single() == char }
+    }
 }
 
 class CheckoutSolution {
     fun checkout(skus: String): Int {
         if (skus.isEmpty()) return -1
-        val validSkus = Unit.entries.map { it.name.single() }
-        if (skus.any { it !in validSkus }) return -1
+        val validSkus = Sku.entries.map { it.name.single() }
+        if (skus.any { it !in validSkus }) return -1 //found invalid chars
 
         val counts = skus.groupingBy { it }.eachCount() //map of each sku with the quantity
 
-        
+    }
+
+    private fun calculateOffer(
+        quantity: Int,
+        bundleSize: Int,
+        bundlePrice: Int,
+        unitPrice: Int
+    ): Int {
+        val (offers, remainder) = quantity / bundleSize to quantity % bundleSize
+        return offers * bundlePrice + remainder * unitPrice
     }
 
 
 }
+
 
 
