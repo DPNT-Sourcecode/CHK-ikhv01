@@ -24,10 +24,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.3")
 
     testImplementation(kotlin("test"))
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testImplementation("org.springframework.kafka:spring-kafka-test:3.2.4")
-    testImplementation("com.ninja-squad:springmockk:4.0.2")
     testImplementation("io.kotest:kotest-assertions-core:5.8.0")
     testImplementation("io.kotest:kotest-assertions-core:5.8.0")
     testImplementation("io.kotest:kotest-framework-api:5.8.0")
@@ -71,5 +68,6 @@ tasks.jacocoTestReport {
         html.required.set(false)
     }
 }
+
 
 
