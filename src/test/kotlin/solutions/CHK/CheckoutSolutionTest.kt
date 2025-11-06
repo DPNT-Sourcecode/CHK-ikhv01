@@ -34,4 +34,21 @@ class CheckoutSolutionTest {
         checkout.checkout(input) shouldBe expected
     }
 
+    private fun getMultipleItemsInputs() = listOf(
+        Arguments.of("AB" to 80),
+        Arguments.of("AB" to 80),
+        Arguments.of("AB" to 80),
+        Arguments.of("AB" to 80),
+        Arguments.of("AB" to 80),
+        Arguments.of("AB" to 80),
+        Arguments.of("AB" to 80),
+        Arguments.of("AB" to 80),
+    )
+
+
+    fun `checkout should calculate totals with multiple items and apply offers`(input: String, expected: Int) {
+        val checkout = CheckoutSolution()
+        checkout.checkout(input) shouldBe expected
+    }
+
 }
