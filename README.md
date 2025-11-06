@@ -1,33 +1,35 @@
-# tdl-runner-kotlin
+# tdl-runner-java
 
 
 ## 1. Requirements
 
-- `JVM 21`
+- `Java 21`
 
 ## 2. How to start
 
-- Open `src/main/kotlin/SendCommandToServer.kt` in your favorite IDE
+- Open `src/main/java/io/accelerate/SendCommandToServer.java` in your favorite IDE
 - Read the comments as documentation, they will guide through the rest of the setup
+
+
 
 
 ---
 
 ## Detailed notes on importing a project
 
-You have to import and run the respective Gradle project (`build.gradle.kts` file) files into your IDE,
+You have to import and run the respective Gradle project (`build.gradle` file) files into your IDE,
 depending on the support for these types of build files.
 
 ### IntelliJ
 
-IntelliJ comes with build-in support for both Gradle and Kotlin.
+IntelliJ comes with build-in support for both Gradle and Maven.
 You just need to import the appropriate file.
 
 #### Gradle project
 
 Importing an existing Gradle project into IntelliJ
 - From the Welcome screen, click Import Project...
-- Navigate to your Gradle project (`build.gradle.kts` file) and select the top-level folder...
+- Navigate to your Gradle project (`build.gradle` file) and select the top-level folder...
 - Click OK...
 
 See also [Importing a project from a Gradle model](https://www.jetbrains.com/help/idea/gradle.html#gradle_import)
