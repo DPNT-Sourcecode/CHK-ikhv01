@@ -244,7 +244,7 @@ class CheckoutSolution {
         applyFreeItemOffer(grouped, Sku.E, 2, Sku.B)
         applyFreeItemOffer(grouped, Sku.N, 3, Sku.M)
         applyFreeItemOffer(grouped, Sku.R, 3, Sku.Q)
-        applySelfFreeItemOffer(grouped, Sku.R, 2)
+        applySelfFreeItemOffer(grouped, Sku.F, 2)
         applySelfFreeItemOffer(grouped, Sku.U, 3)
 
         val groupOfferTotal = applyGroupOffer(grouped, setOf(Sku.S, Sku.T, Sku.X, Sku.Y, Sku.Z), 3, 45)
@@ -284,40 +284,6 @@ class CheckoutSolution {
         grouped[freeSku] = (grouped.getOrDefault(freeSku, 0) - freeCount).coerceAtLeast(0)
 
     }
-
-//    private fun applyFreeUFromU(grouped: MutableMap<Sku, Int>) {
-//        val uCount = grouped.getOrDefault(Sku.U, 0)
-//        val freeU = uCount / 4
-//        grouped[Sku.U] = (uCount - freeU).coerceAtLeast(0)
-//    }
-//
-//    private fun applyFreeQFromR(grouped: MutableMap<Sku, Int>) {
-//        val rCount = grouped.getOrDefault(Sku.R, 0)
-//        val qCount = grouped.getOrDefault(Sku.Q, 0)
-//        val freeQ = rCount / 3
-//        grouped[Sku.Q] = (qCount - freeQ).coerceAtLeast(0)
-//    }
-//
-//    private fun applyFreeMFromN(grouped: MutableMap<Sku, Int>) {
-//        val nCount = grouped.getOrDefault(Sku.N, 0)
-//        val mCount = grouped.getOrDefault(Sku.M, 0)
-//        val freeM = nCount / 3
-//        grouped[Sku.M] = (mCount - freeM).coerceAtLeast(0)
-//
-//    }
-//
-//    private fun applyFreeFFor2F(grouped: MutableMap<Sku, Int>) {
-//        val fCount = grouped.getOrDefault(Sku.F, 0)
-//        val freeF = fCount / 3
-//        grouped[Sku.F] = (fCount - freeF).coerceAtLeast(0)
-//    }
-//
-//    private fun applyFreeBFromE(grouped: MutableMap<Sku, Int>) {
-//        val eCount = grouped.getOrDefault(Sku.E, 0)
-//        val freeB = eCount / 2
-//        val bCount = grouped.getOrDefault(Sku.B, 0)
-//        grouped[Sku.B] = (bCount - freeB).coerceAtLeast(0)
-//    }
 
     private fun calculateTotal(grouped: MutableMap<Sku, Int>): Int = grouped.entries.sumOf { (sku, count) ->
         when (sku) {
@@ -363,8 +329,8 @@ class CheckoutSolution {
         total += remaining * unitPrice
         return total
     }
-
 }
+
 
 
 
