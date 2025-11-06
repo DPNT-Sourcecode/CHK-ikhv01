@@ -82,9 +82,9 @@ class CheckoutSolutionTest {
         Arguments.of("UUUU", 120), // 4U GET ONE U FREE
         Arguments.of("VV", 90), // 2V FOR 90
         Arguments.of("VVV", 130), // 3V FOR 130
-        Arguments.of("VVVV", 180), // 3V FOR 130+50
-        Arguments.of("VVVVV", 220), // EU GET ONE U FREE
-        Arguments.of("VVVVVV", 260), // EU GET ONE U FREE
+        Arguments.of("VVVV", 180), // 3v for 130 +1v for 50
+        Arguments.of("VVVVV", 220), // 3v for 130 +2v for 90
+        Arguments.of("VVVVVV", 260), // 3v for 130+ 3v for 130
 
 
     )
@@ -98,4 +98,3 @@ class CheckoutSolutionTest {
     }
 
 }
-

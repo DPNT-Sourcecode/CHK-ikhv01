@@ -153,7 +153,28 @@ enum class Sku(val price: Int) {
     C(20),
     D(15),
     E(40),
-    F(10);
+    F(10),
+    G(20),
+    H(10),
+    I(35),
+    J(60),
+    K(80),
+    L(90),
+    M(15),
+    N(40),
+    O(10),
+    P(50),
+    Q(30),
+    R(50),
+    S(30),
+    T(20),
+    U(40),
+    V(50),
+    W(20),
+    X(90),
+    Y(10),
+    Z(50);
+
 
     companion object {
         fun from(char: Char): Sku? = entries.find { it.name.single() == char }
@@ -168,11 +189,15 @@ class CheckoutSolution {
 
         val grouped = groupItems(skus)
 
-
         applyFreeBFromE(grouped)
+        applyFreeMFromN(grouped)
         applyFreeFFor2F(grouped)
         return calculateTotal(grouped)
 
+    }
+
+    private fun applyFreeMFromN(grouped: MutableMap<Sku, Int>) {
+        val nCount = grouped.getOrDefault(Sku.N)
     }
 
     private fun calculateTotal(grouped: MutableMap<Sku, Int>): Int = grouped.entries.sumOf { (sku, count) ->
@@ -217,6 +242,5 @@ class CheckoutSolution {
     }
 
 }
-
 
 
