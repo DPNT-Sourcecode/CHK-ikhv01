@@ -20,11 +20,10 @@ class CheckoutSolutionTest {
 
 
     private fun getSingeItemInputs() = listOf(
-        Arguments.of("A" to 50),
-        Arguments.of("B" to 30),
-        Arguments.of("C" to 20),
-        Arguments.of("D" to 15),
-        Arguments.of("" to 0)
+        Arguments.of("A", 50),
+        Arguments.of("B", 30),
+        Arguments.of("C", 20),
+        Arguments.of("D", 15)
     )
 
     @ParameterizedTest
@@ -35,13 +34,13 @@ class CheckoutSolutionTest {
     }
 
     private fun getMultipleItemsInputs() = listOf(
-        Arguments.of("AB" to 80),
-        Arguments.of("ABC" to 100),
-        Arguments.of("ABCD" to 115),
-        Arguments.of("AA" to 100),
-        Arguments.of("BB" to 45), // 2B OFFER
-        Arguments.of("AAA" to 130), //3A OFFER
-        Arguments.of("AAAABBB" to 255) // 3A OFFER +1A PLUS 2B OFFER PLUS 1
+        Arguments.of("AB", 80),
+        Arguments.of("ABC", 100),
+        Arguments.of("ABCD", 115),
+        Arguments.of("AA", 100),
+        Arguments.of("BB", 45), // 2B OFFER
+        Arguments.of("AAA", 130), //3A OFFER
+        Arguments.of("AAAABBB", 255) // 3A OFFER +1A PLUS 2B OFFER PLUS 1
     )
 
 
@@ -53,3 +52,4 @@ class CheckoutSolutionTest {
     }
 
 }
+

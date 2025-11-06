@@ -44,13 +44,13 @@ class CheckoutSolution {
         if (skus.isEmpty()) return -1
         val validSkus = Unit.entries.map { it.name.single() }
         if (skus.any { it !in validSkus }) return -1
-        return skus.sumOf { sku ->
-            Unit.valueOf(sku.toString()).price
-        }
 
+        val counts = skus.groupingBy { it }.eachCount() //map of each sku with the quantity
 
+        
     }
 
 
 }
+
 
