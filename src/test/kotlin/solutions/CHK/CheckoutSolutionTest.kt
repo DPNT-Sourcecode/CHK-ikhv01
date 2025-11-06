@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CheckoutSolutionTest {
 
-    private fun getInvalidInputs() = listOf("a", "A1", "z", "G", "*", "Aba", "ABCD1", "ABCa")
+    private fun getInvalidInputs() = listOf("a", "A1", "z*", "G_", "*", "Aba", "ABCD1", "ABCa", "ABCDEFGHi")
 
     @ParameterizedTest
     @MethodSource("getInvalidInputs")
@@ -25,7 +25,28 @@ class CheckoutSolutionTest {
         Arguments.of("C", 20),
         Arguments.of("D", 15),
         Arguments.of("E", 40),
-        Arguments.of("F", 10)
+        Arguments.of("F", 10),
+        Arguments.of("G", 10),
+        Arguments.of("H", 10),
+        Arguments.of("I", 10),
+        Arguments.of("J", 10),
+        Arguments.of("K", 10),
+        Arguments.of("L", 10),
+        Arguments.of("M", 10),
+        Arguments.of("N", 10),
+        Arguments.of("O", 10),
+        Arguments.of("P", 10),
+        Arguments.of("Q", 10),
+        Arguments.of("R", 10),
+        Arguments.of("S", 10),
+        Arguments.of("T", 10),
+        Arguments.of("U", 10),
+        Arguments.of("V", 10),
+        Arguments.of("W", 10),
+        Arguments.of("X", 10),
+        Arguments.of("Y", 10),
+        Arguments.of("Z", 10)
+
 
     )
 
