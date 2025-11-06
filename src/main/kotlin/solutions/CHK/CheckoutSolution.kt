@@ -321,15 +321,18 @@ class CheckoutSolution {
     private fun calculateTieredOffer(quantity: Int, offers: List<Pair<Int, Int>>, unitPrice: Int): Int {
         var remaining = quantity
         var total = 0
-        for ((size, price) in offers.sortedByDescending { it.first }) {
-            val bundles = remaining / size
-            remaining %= size
-            total += bundles * price
+        //go through each offer tier, starting with the largest
+        for ((bundleSize, bundlePrice) in offers.sortedByDescending { it.first }) {
+            val bundles = remaining / bundleSize
+            remaining %= bundleSize
+            total += bundles * bundlePrice
         }
+        //add the cost of leftover items that don't fit any offer
         total += remaining * unitPrice
         return total
     }
 }
+
 
 
 
