@@ -35,6 +35,7 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.9")
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.11.0")
 }
 
 tasks.named<JavaExec>("run") {
@@ -70,4 +71,5 @@ tasks.jacocoTestReport {
         html.required.set(false)
     }
 }
+
 
