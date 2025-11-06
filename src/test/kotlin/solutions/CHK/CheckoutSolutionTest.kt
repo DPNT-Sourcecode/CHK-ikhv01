@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CheckoutSolutionTest {
 
-    private fun getInvalidInputs() = listOf("a", "A1", "z", "E", "*", "Aba")
+    private fun getInvalidInputs() = listOf("a", "A1", "z", "E", "*", "Aba", "ABCD1", "ABCa")
 
     @ParameterizedTest
     @MethodSource("getInvalidInputs")
@@ -36,16 +36,17 @@ class CheckoutSolutionTest {
 
     private fun getMultipleItemsInputs() = listOf(
         Arguments.of("AB" to 80),
-        Arguments.of("AB" to 80),
-        Arguments.of("AB" to 80),
-        Arguments.of("AB" to 80),
-        Arguments.of("AB" to 80),
-        Arguments.of("AB" to 80),
-        Arguments.of("AB" to 80),
-        Arguments.of("AB" to 80),
+        Arguments.of("ABC" to 100),
+        Arguments.of("ABCD" to 115),
+        Arguments.of("AA" to 100),
+        Arguments.of("BB" to 45), // 2B OFFER
+        Arguments.of("AAA" to 130), //3A OFFER
+        Arguments.of("AAAABBB" to 255) // 3A OFFER +1A PLUS 2B OFFER PLUS 1
     )
 
 
+    @ParameterizedTest
+    @MethodSource("getMultipleItemsInputs")
     fun `checkout should calculate totals with multiple items and apply offers`(input: String, expected: Int) {
         val checkout = CheckoutSolution()
         checkout.checkout(input) shouldBe expected
