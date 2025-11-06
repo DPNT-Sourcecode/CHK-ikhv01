@@ -13,9 +13,9 @@ class HelloSolutionTest {
 
     @ParameterizedTest
     @MethodSource("getSomeStrings")
-    fun `it should properly say hello to the provided name`() {
+    fun `it should properly say hello to the provided name`(input: String) {
         val hello = HelloSolution()
-        hello.hello("Dimi") shouldBe "Hello, World!"
+        hello.hello(input) shouldBe "Hello, $input!"
     }
 }
 

@@ -1,5 +1,5 @@
 package solutions.HLO
 
 class HelloSolution {
-    fun hello(friendName: String) = "Hello, World!"
+    fun hello(friendName: String) = "Hello, $friendName!"
 }
