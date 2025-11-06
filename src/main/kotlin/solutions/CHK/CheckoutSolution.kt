@@ -236,6 +236,7 @@ class CheckoutSolution {
         when (sku) {
             Sku.A -> calculateOfferForA(count)
             Sku.B -> calculateOffer(count, 2, 45, sku.price)
+            Sku.H -> calculateTieredOffer(count, listOf(10 to 80, 5 to 45), sku.price)
             else -> count * sku.price
         }
     }
@@ -260,7 +261,22 @@ class CheckoutSolution {
         return fiveBundles * 200 + threeBundles * 130 + remainder * Sku.A.price
     }
 
+    private fun calculateTieredOffer(quantity: Int, offers: List<Pair<Int, Int>>, unitPrice: Int): Int {
+        var remaining = quantity
+        var total = 0
+        for ((size, price) in offers.sortedByDescending { it.first }) {
+            val bundles = remaining / size
+            remaining %= size
+            total += bundles * price
+        }
+        total += remaining * unitPrice
+        return total
+    }
+
 }
+
+
+
 
 
 
