@@ -116,15 +116,10 @@ class CheckoutSolution {
         if (skus.any { it !in validSkus }) return -1 //found invalid chars
 
         val grouped = groupItems(skus)
-        val eCount = grouped.getOrDefault(Sku.E, 0)
-        val freeB = eCount / 2
-        val bCount = grouped.getOrDefault(Sku.B, 0)
-        grouped[Sku.B] = (bCount - freeB).coerceAtLeast(0)
 
-        val fCount = grouped.getOrDefault(Sku.F, 0)
-        val freeF = fCount / 3
-        grouped[Sku.F] = (fCount - freeF).coerceAtLeast(0)
 
+        applyFreeBFromE(grouped)
+        applyFreeFFor2F(grouped)
 
         return grouped.entries.sumOf { (sku, count) ->
             when (sku) {
@@ -137,8 +132,20 @@ class CheckoutSolution {
 
     }
 
-    private fun groupItems(skus: String) = skus.mapNotNull { Sku.from(it) }.groupingBy { it }.eachCount().toMutableMap()
+    private fun applyFreeFFor2F(grouped: MutableMap<Sku, Int>) {
+        val fCount = grouped.getOrDefault(Sku.F, 0)
+        val freeF = fCount / 3
+        grouped[Sku.F] = (fCount - freeF).coerceAtLeast(0)
+    }
 
+    private fun applyFreeBFromE(grouped: MutableMap<Sku, Int>) {
+        val eCount = grouped.getOrDefault(Sku.E, 0)
+        val freeB = eCount / 2
+        val bCount = grouped.getOrDefault(Sku.B, 0)
+        grouped[Sku.B] = (bCount - freeB).coerceAtLeast(0)
+    }
+
+    private fun groupItems(skus: String) = skus.mapNotNull { Sku.from(it) }.groupingBy { it }.eachCount().toMutableMap()
 
     private fun calculateOffer(
         quantity: Int,
@@ -159,6 +166,7 @@ class CheckoutSolution {
     }
 
 }
+
 
 
 
