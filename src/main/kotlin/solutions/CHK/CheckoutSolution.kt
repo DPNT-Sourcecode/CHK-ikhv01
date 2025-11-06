@@ -145,6 +145,58 @@ In order to complete the round you need to implement the following method:
 checkout(string) -> integer
  - param[0] = a string containing the SKUs of all the products in the basket
  - @return = an integer representing the total checkout value of the items
+
+ CHK_R5
+ROUND 5 - A new offer type + price updates
+All the other major supermarket have adopted a new offer type: group discount offer.
+The offer could be presented like: buy any 3 of a group of items for 45
+To keep up with the market, we need to make some price adjustments.
+Please use the new and updated price table.
+
+Our price table and offers:
++------+-------+---------------------------------+
+| Item | Price | Special offers                  |
++------+-------+---------------------------------+
+| A    | 50    | 3A for 130, 5A for 200          |
+| B    | 30    | 2B for 45                       |
+| C    | 20    |                                 |
+| D    | 15    |                                 |
+| E    | 40    | 2E get one B free               |
+| F    | 10    | 2F get one F free               |
+| G    | 20    |                                 |
+| H    | 10    | 5H for 45, 10H for 80           |
+| I    | 35    |                                 |
+| J    | 60    |                                 |
+| K    | 70    | 2K for 120                      |
+| L    | 90    |                                 |
+| M    | 15    |                                 |
+| N    | 40    | 3N get one M free               |
+| O    | 10    |                                 |
+| P    | 50    | 5P for 200                      |
+| Q    | 30    | 3Q for 80                       |
+| R    | 50    | 3R get one Q free               |
+| S    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
+| T    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
+| U    | 40    | 3U get one U free               |
+| V    | 50    | 2V for 90, 3V for 130           |
+| W    | 20    |                                 |
+| X    | 17    | buy any 3 of (S,T,X,Y,Z) for 45 |
+| Y    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
+| Z    | 21    | buy any 3 of (S,T,X,Y,Z) for 45 |
++------+-------+---------------------------------+
+
+
+Notes:
+ - The policy of the supermarket is to always favor the customer when applying special offers.
+ - Offers involving multiple items always give a better discount than offers containing fewer items.
+ - For any illegal input return -1
+
+In order to complete the round you need to implement the following method:
+
+checkout(string) -> integer
+ - param[0] = a string containing the SKUs of all the products in the basket
+ - @return = an integer representing the total checkout value of the items
+
  */
 
 enum class Sku(val price: Int) {
@@ -158,7 +210,7 @@ enum class Sku(val price: Int) {
     H(10),
     I(35),
     J(60),
-    K(80),
+    K(70),
     L(90),
     M(15),
     N(40),
@@ -166,14 +218,14 @@ enum class Sku(val price: Int) {
     P(50),
     Q(30),
     R(50),
-    S(30),
+    S(20),
     T(20),
     U(40),
     V(50),
     W(20),
-    X(90),
-    Y(10),
-    Z(50);
+    X(17),
+    Y(20),
+    Z(21);
 
 
     companion object {
@@ -278,6 +330,7 @@ class CheckoutSolution {
     }
 
 }
+
 
 
 

@@ -85,6 +85,11 @@ class CheckoutSolutionTest {
         Arguments.of("VVVVVV", 260), // 3v for 130+ 3v for 130
 
 
+        Arguments.of("STX", 90), // any 3 for 90
+        Arguments.of("SXY", 90), // ANY 3 FOR 90
+        Arguments.of("VVVVVV", 260), // 3v for 130+ 3v for 130
+
+
     )
 
 
