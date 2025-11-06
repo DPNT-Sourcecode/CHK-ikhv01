@@ -41,7 +41,12 @@ enum class Unit(price: Int) {
 
 class CheckoutSolution {
     fun checkout(skus: String): Int {
-        val validSkus=Unit.entries.map { it.name.single()
-        if(skus.any{it !in  }})
+        val validSkus = Unit.entries.map { it.name.single() }
+        if (skus.any { it !in validSkus }) return -1
+        return 1
+
+
     }
+
+
 }

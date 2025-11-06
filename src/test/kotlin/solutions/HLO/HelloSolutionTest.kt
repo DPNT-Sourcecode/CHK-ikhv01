@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class HelloSolutionTest {
 
-    fun getSomeStrings() = listOf("a", "s", "asdf", "aweqrt", "asdgf", "aasdfa", "a234", "", "blabls1234")
+    private fun getSomeStrings() = listOf("a", "s", "asdf", "aweqrt", "asdgf", "aasdfa", "a234", "", "blabls1234")
 
     @ParameterizedTest
     @MethodSource("getSomeStrings")
