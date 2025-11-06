@@ -45,7 +45,7 @@ enum class Sku(val price: Int) {
 
 class CheckoutSolution {
     fun checkout(skus: String): Int {
-        if (skus.isEmpty()) return -1
+        if (skus.isEmpty()) return 0
         val validSkus = Sku.entries.map { it.name.single() }
         if (skus.any { it !in validSkus }) return -1 //found invalid chars
 
@@ -73,4 +73,5 @@ class CheckoutSolution {
 
 
 }
+
 
