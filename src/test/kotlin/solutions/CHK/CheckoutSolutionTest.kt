@@ -87,7 +87,7 @@ class CheckoutSolutionTest {
         Arguments.of("SXY", 45),
         Arguments.of("STXYZ", 45 + 37), // 3 FOR 45 + remaining x(17) Y(20)
         Arguments.of("SSS", 45),
-        Arguments.of("SST", 60), // less than 3 -> no offer
+        Arguments.of("SST", 45),
         Arguments.of("XYZXYZ", 90), // 6 items = 2x(3 for 45)
 
 
@@ -102,6 +102,7 @@ class CheckoutSolutionTest {
     }
 
 }
+
 
 
 

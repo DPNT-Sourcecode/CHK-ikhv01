@@ -310,7 +310,7 @@ class CheckoutSolution {
             Sku.A -> calculateOfferForA(count)
             Sku.B -> calculateOffer(count, 2, 45, sku.price)
             Sku.H -> calculateTieredOffer(count, listOf(10 to 80, 5 to 45), sku.price)
-            Sku.K -> calculateOffer(count, 2, 150, sku.price)
+            Sku.K -> calculateOffer(count, 2, 120, sku.price)
             Sku.P -> calculateOffer(count, 5, 200, sku.price)
             Sku.Q -> calculateOffer(count, 3, 80, sku.price)
             Sku.V -> calculateTieredOffer(count, listOf(3 to 130, 2 to 90), sku.price)
@@ -351,6 +351,7 @@ class CheckoutSolution {
     }
 
 }
+
 
 
 
