@@ -191,21 +191,32 @@ class CheckoutSolution {
 
         applyFreeBFromE(grouped)
         applyFreeMFromN(grouped)
+        applyFreeQFromR(grouped)
         applyFreeFFor2F(grouped)
+        applyFreeUFromU(grouped)
         return calculateTotal(grouped)
 
     }
 
-    private fun applyFreeMFromN(grouped: MutableMap<Sku, Int>) {
-        val nCount = grouped.getOrDefault(Sku.N)
+    private fun applyFreeUFromU(grouped: kotlin.collections.MutableMap<solutions.CHK.Sku, Int>) {
+        val uCount = grouped.getOrDefault(Sku.U, 0)
+        val freeU = uCount / 4
+        grouped[Sku.U] = (uCount - freeU).coerceAtLeast(0)
     }
 
-    private fun calculateTotal(grouped: MutableMap<Sku, Int>): Int = grouped.entries.sumOf { (sku, count) ->
-        when (sku) {
-            Sku.A -> calculateOfferForA(count)
-            Sku.B -> calculateOffer(count, 2, 45, sku.price)
-            else -> count * sku.price
-        }
+    private fun applyFreeQFromR(grouped: MutableMap<Sku, Int>) {
+        val rCount = grouped.getOrDefault(Sku.R, 0)
+        val qCount = grouped.getOrDefault(Sku.Q, 0)
+        val freeQ = rCount / 3
+        grouped[Sku.Q] = (qCount - freeQ).coerceAtLeast(0)
+    }
+
+    private fun applyFreeMFromN(grouped: MutableMap<Sku, Int>) {
+        val nCount = grouped.getOrDefault(Sku.N, 0)
+        val mCount = grouped.getOrDefault(Sku.B, 0)
+        val freeM = nCount / 3
+        grouped[Sku.M] = (mCount - freeM).coerceAtLeast(0)
+
     }
 
     private fun applyFreeFFor2F(grouped: MutableMap<Sku, Int>) {
@@ -219,6 +230,14 @@ class CheckoutSolution {
         val freeB = eCount / 2
         val bCount = grouped.getOrDefault(Sku.B, 0)
         grouped[Sku.B] = (bCount - freeB).coerceAtLeast(0)
+    }
+
+    private fun calculateTotal(grouped: MutableMap<Sku, Int>): Int = grouped.entries.sumOf { (sku, count) ->
+        when (sku) {
+            Sku.A -> calculateOfferForA(count)
+            Sku.B -> calculateOffer(count, 2, 45, sku.price)
+            else -> count * sku.price
+        }
     }
 
     private fun groupItems(skus: String) = skus.mapNotNull { Sku.from(it) }.groupingBy { it }.eachCount().toMutableMap()
@@ -242,5 +261,6 @@ class CheckoutSolution {
     }
 
 }
+
 
 
