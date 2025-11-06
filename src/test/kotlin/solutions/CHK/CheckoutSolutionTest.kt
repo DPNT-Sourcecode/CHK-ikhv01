@@ -70,8 +70,6 @@ class CheckoutSolutionTest {
         Arguments.of("ABCDE", 155), //50+30+20+15+40=155,
         Arguments.of("FFFFFF", 40), // 2F plus 1 free and another 2Fs plus 1 free
         Arguments.of("EEBBFFFFFF", 150), //conbination of EEBB plus 6Fs
-
-
         Arguments.of("HHHHH", 45), // 5H for 45
         Arguments.of("HHHHHHHHHH", 80), //10H 80
         Arguments.of("KK", 150),
