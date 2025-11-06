@@ -246,11 +246,20 @@ class CheckoutSolution {
         applyFreeQFromR(grouped)
         applyFreeFFor2F(grouped)
         applyFreeUFromU(grouped)
+        applyGroupOffer(grouped, setOf(Sku.S, Sku.T, Sku.X, Sku.Y, Sku.Z), 3, 45)
         return calculateTotal(grouped)
 
     }
 
-    private fun applyFreeUFromU(grouped: kotlin.collections.MutableMap<Sku, Int>) {
+    private fun applyGroupOffer(
+        grouped: MutableMap<Sku, Int>,
+        of: Set<Sku>,
+        i: Int,
+        i2: Int
+    ) {
+    }
+
+    private fun applyFreeUFromU(grouped: MutableMap<Sku, Int>) {
         val uCount = grouped.getOrDefault(Sku.U, 0)
         val freeU = uCount / 4
         grouped[Sku.U] = (uCount - freeU).coerceAtLeast(0)
@@ -330,6 +339,7 @@ class CheckoutSolution {
     }
 
 }
+
 
 
 
