@@ -61,6 +61,39 @@ In order to complete the round you need to implement the following method:
 checkout(string) -> integer
  - param[0] = a string containing the SKUs of all the products in the basket
  - @return = an integer representing the total checkout value of the items
+
+
+
+ CHK_R3
+ROUND 3 - More items and offers
+A new item has arrived. Item F.
+Our marketing team wants to try rewording the offer to see if it affects consumption
+Instead of multi-pricing this item they want to say "buy 2Fs and get another F free"
+The offer requires you to have 3 Fs in the basket.
+
+Our price table and offers:
++------+-------+------------------------+
+| Item | Price | Special offers         |
++------+-------+------------------------+
+| A    | 50    | 3A for 130, 5A for 200 |
+| B    | 30    | 2B for 45              |
+| C    | 20    |                        |
+| D    | 15    |                        |
+| E    | 40    | 2E get one B free      |
+| F    | 10    | 2F get one F free      |
++------+-------+------------------------+
+
+
+Notes:
+ - The policy of the supermarket is to always favor the customer when applying special offers.
+ - Offers involving multiple items always give a better discount than offers containing fewer items.
+ - For any illegal input return -1
+
+In order to complete the round you need to implement the following method:
+
+checkout(string) -> integer
+ - param[0] = a string containing the SKUs of all the products in the basket
+ - @return = an integer representing the total checkout value of the items
  */
 
 enum class Sku(val price: Int) {
@@ -118,6 +151,7 @@ class CheckoutSolution {
     }
 
 }
+
 
 
 
