@@ -18,4 +18,3 @@ class HelloSolutionTest {
         hello.hello(input) shouldBe "Hello, $input!"
     }
 }
-

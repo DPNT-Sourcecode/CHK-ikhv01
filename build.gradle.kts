@@ -69,5 +69,3 @@ tasks.jacocoTestReport {
     }
 }
 
-
-
