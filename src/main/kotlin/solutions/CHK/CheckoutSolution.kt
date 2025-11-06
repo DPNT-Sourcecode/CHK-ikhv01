@@ -80,7 +80,14 @@ class CheckoutSolution {
         val validSkus = Sku.entries.map { it.name.single() }
         if (skus.any { it !in validSkus }) return -1 //found invalid chars
 
-        val grouped = skus.groupingBy { it }.eachCount() //map of each sku with the quantity
+        val grouped = skus.groupingBy { it }.eachCount().toMutableMap()
+        val eCount = grouped.getOrDefault('E', 0)
+        val freeB = eCount / 2
+        val bCount = grouped.getOrDefault('B', 0)
+
+
+
+
         return grouped.entries.sumOf { (charSku, count) ->
             when (val sku = Sku.from(charSku)!!) { //safe since we're validation above
                 Sku.A -> calculateOffer(count, 3, 130, sku.price)
@@ -104,6 +111,7 @@ class CheckoutSolution {
 
 
 }
+
 
 
 
