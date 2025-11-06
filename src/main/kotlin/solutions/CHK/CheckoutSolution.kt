@@ -84,13 +84,11 @@ class CheckoutSolution {
         val eCount = grouped.getOrDefault('E', 0)
         val freeB = eCount / 2
         val bCount = grouped.getOrDefault('B', 0)
-
-
-
+        grouped['B'] = (bCount - freeB).coerceAtLeast(0)
 
         return grouped.entries.sumOf { (charSku, count) ->
             when (val sku = Sku.from(charSku)!!) { //safe since we're validation above
-                Sku.A -> calculateOffer(count, 3, 130, sku.price)
+                Sku.A -> calculateOfferForA(count)
                 Sku.B -> calculateOffer(count, 2, 45, sku.price)
                 else -> count * sku.price
             }
@@ -109,9 +107,17 @@ class CheckoutSolution {
         return offers * bundlePrice + remainder * unitPrice
     }
 
+    private fun calculateOfferForA(quantity: Int): Int {
+        val fiveBundles = quantity / 5
+        val remainderAfterFive = quantity % 5
+        val threeBundles = remainderAfterFive / 3
+        val remainder = remainderAfterFive % 3
+        return fiveBundles * 200 + threeBundles * 130 + remainder * 50
+
+
+    }
+
 
 }
-
-
 
 
