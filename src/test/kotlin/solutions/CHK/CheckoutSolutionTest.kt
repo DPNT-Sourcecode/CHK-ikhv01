@@ -23,7 +23,9 @@ class CheckoutSolutionTest {
         Arguments.of("A", 50),
         Arguments.of("B", 30),
         Arguments.of("C", 20),
-        Arguments.of("D", 15)
+        Arguments.of("D", 15),
+        Arguments.of("E", 40)
+
     )
 
     @ParameterizedTest
@@ -40,7 +42,11 @@ class CheckoutSolutionTest {
         Arguments.of("AA", 100),
         Arguments.of("BB", 45), // 2B OFFER
         Arguments.of("AAA", 130), //3A OFFER
-        Arguments.of("AAAABBB", 255) // 3A OFFER +1A PLUS 2B OFFER PLUS 1
+        Arguments.of("AAAABBB", 255), // 3A OFFER +1A PLUS 2B OFFER PLUS 1
+        Arguments.of("EEB", 80), // 2E get 1B free
+        Arguments.of("EEBB", 110), //2E get 1B free, 1B paid since it's cheaper than 2B for 45
+        Arguments.of("ABCDE", 155), //50+30+20+15+40=155
+
     )
 
 
