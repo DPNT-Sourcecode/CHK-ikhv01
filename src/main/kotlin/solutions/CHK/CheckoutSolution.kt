@@ -241,16 +241,21 @@ class CheckoutSolution {
 
         val grouped = groupItems(skus)
 
-//        applyFreeBFromE(grouped)
-//        applyFreeMFromN(grouped)
-//        applyFreeQFromR(grouped)
-//        applyFreeFFor2F(grouped)
-//        applyFreeUFromU(grouped)
-        applyFreeItemOffer(grouped, E, 2, B)
-        applyFreeItemOffer(grouped, E, 2, B)
+        applyFreeItemOffer(grouped, Sku.E, 2, Sku.B)
+        applyFreeItemOffer(grouped, Sku.N, 3, Sku.M)
+        applyFreeItemOffer(grouped, Sku.R, 3, Sku.Q)
+        applySelfFreeItemOffer(grouped, Sku.R, 2)
+        applySelfFreeItemOffer(grouped, Sku.U, 3)
+
         val groupOfferTotal = applyGroupOffer(grouped, setOf(Sku.S, Sku.T, Sku.X, Sku.Y, Sku.Z), 3, 45)
         return calculateTotal(grouped) + groupOfferTotal
 
+    }
+
+    private fun applySelfFreeItemOffer(grouped: MutableMap<Sku, Int>, sku: Sku, triggerQty: Int) {
+        val count = grouped.getOrDefault(sku, 0)
+        val freeCount = count / (triggerQty + 1)
+        grouped[sku] = (count - freeCount).coerceAtLeast(0)
     }
 
     private fun applyGroupOffer(grouped: MutableMap<Sku, Int>, eligible: Set<Sku>, groupSize: Int, groupPrice: Int): Int {
@@ -360,6 +365,7 @@ class CheckoutSolution {
     }
 
 }
+
 
 
 
