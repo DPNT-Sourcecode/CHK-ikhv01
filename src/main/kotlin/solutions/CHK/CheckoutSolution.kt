@@ -251,12 +251,12 @@ class CheckoutSolution {
 
     }
 
-    private fun applyGroupOffer(
-        grouped: MutableMap<Sku, Int>,
-        of: Set<Sku>,
-        i: Int,
-        i2: Int
-    ) {
+    private fun applyGroupOffer(grouped: MutableMap<Sku, Int>, eligible: Set<Sku>, groupSize: Int, groupPrice: Int) {
+        val groupItems = eligible.flatMap { sku ->
+            List(grouped.getOrDefault(sku, 0)) { sku }
+
+        }.sortedByDescending { it.price }
+
     }
 
     private fun applyFreeUFromU(grouped: MutableMap<Sku, Int>) {
@@ -339,6 +339,7 @@ class CheckoutSolution {
     }
 
 }
+
 
 
 
