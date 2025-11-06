@@ -115,7 +115,7 @@ class CheckoutSolution {
         val validSkus = Sku.entries.map { it.name.single() }.toSet()
         if (skus.any { it !in validSkus }) return -1 //found invalid chars
 
-        val grouped = skus.mapNotNull { Sku.from(it) }.groupingBy { it }.eachCount().toMutableMap()
+        val grouped = groupItems(skus)
         val eCount = grouped.getOrDefault(Sku.E, 0)
         val freeB = eCount / 2
         val bCount = grouped.getOrDefault(Sku.B, 0)
@@ -137,6 +137,9 @@ class CheckoutSolution {
 
     }
 
+    private fun groupItems(skus: String) = skus.mapNotNull { Sku.from(it) }.groupingBy { it }.eachCount().toMutableMap()
+
+
     private fun calculateOffer(
         quantity: Int,
         bundleSize: Int,
@@ -156,6 +159,7 @@ class CheckoutSolution {
     }
 
 }
+
 
 
 
