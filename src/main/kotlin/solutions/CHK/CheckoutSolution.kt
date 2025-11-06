@@ -67,7 +67,8 @@ enum class Sku(val price: Int) {
     A(50),
     B(30),
     C(20),
-    D(15);
+    D(15),
+    E(40);
 
     companion object {
         fun from(char: Char): Sku? = entries.find { it.name.single() == char }
@@ -77,17 +78,18 @@ enum class Sku(val price: Int) {
 class CheckoutSolution {
     fun checkout(skus: String): Int {
         if (skus.isEmpty()) return 0
-        val validSkus = Sku.entries.map { it.name.single() }
+        val validSkus = Sku.entries.map { it.name.single() }.toSet()
         if (skus.any { it !in validSkus }) return -1 //found invalid chars
 
-        val grouped = skus.groupingBy { it }.eachCount().toMutableMap()
-        val eCount = grouped.getOrDefault('E', 0)
+        val grouped = skus.mapNotNull { Sku.from(it) }.groupingBy { it }.eachCount().toMutableMap()
+        val eCount = grouped.getOrDefault(Sku.E, 0)
         val freeB = eCount / 2
-        val bCount = grouped.getOrDefault('B', 0)
-        grouped['B'] = (bCount - freeB).coerceAtLeast(0)
+        val bCount = grouped.getOrDefault(Sku.B, 0)
+        grouped[Sku.B] = (bCount - freeB).coerceAtLeast(0)
 
-        return grouped.entries.sumOf { (charSku, count) ->
-            when (val sku = Sku.from(charSku)!!) { //safe since we're validation above
+
+        return grouped.entries.sumOf { (sku, count) ->
+            when (sku) {
                 Sku.A -> calculateOfferForA(count)
                 Sku.B -> calculateOffer(count, 2, 45, sku.price)
                 else -> count * sku.price
@@ -112,11 +114,11 @@ class CheckoutSolution {
         val remainderAfterFive = quantity % 5
         val threeBundles = remainderAfterFive / 3
         val remainder = remainderAfterFive % 3
-        return fiveBundles * 200 + threeBundles * 130 + remainder * 50
+        return fiveBundles * 200 + threeBundles * 130 + remainder * Sku.A.price
     }
 
-
 }
+
 
 
 
