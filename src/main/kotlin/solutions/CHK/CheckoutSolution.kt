@@ -246,16 +246,30 @@ class CheckoutSolution {
         applyFreeQFromR(grouped)
         applyFreeFFor2F(grouped)
         applyFreeUFromU(grouped)
-        applyGroupOffer(grouped, setOf(Sku.S, Sku.T, Sku.X, Sku.Y, Sku.Z), 3, 45)
-        return calculateTotal(grouped)
+        val groupOfferTotal = applyGroupOffer(grouped, setOf(Sku.S, Sku.T, Sku.X, Sku.Y, Sku.Z), 3, 45)
+        return calculateTotal(grouped) + groupOfferTotal
 
     }
 
-    private fun applyGroupOffer(grouped: MutableMap<Sku, Int>, eligible: Set<Sku>, groupSize: Int, groupPrice: Int) {
+    private fun applyGroupOffer(grouped: MutableMap<Sku, Int>, eligible: Set<Sku>, groupSize: Int, groupPrice: Int): Int {
         val groupItems = eligible.flatMap { sku ->
             List(grouped.getOrDefault(sku, 0)) { sku }
 
         }.sortedByDescending { it.price }
+        val totalGroups = groupItems.size / groupSize
+        if (totalGroups == 0) return 0
+
+        var remaining = totalGroups * groupSize
+        for (sku in groupItems) {
+            if (remaining == 0) break
+            val count = grouped.getOrDefault(sku, 0)
+            if (count > 0) {
+                grouped[sku] = count - 1
+                remaining--
+            }
+        }
+        return totalGroups * groupPrice
+
 
     }
 
@@ -339,6 +353,7 @@ class CheckoutSolution {
     }
 
 }
+
 
 
 
