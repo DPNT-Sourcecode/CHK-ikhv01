@@ -103,8 +103,3 @@ class CheckoutSolutionTest {
     }
 
 }
-
-
-
-
-
