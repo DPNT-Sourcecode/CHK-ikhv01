@@ -269,8 +269,6 @@ class CheckoutSolution {
             }
         }
         return totalGroups * groupPrice
-
-
     }
 
     private fun applyFreeUFromU(grouped: MutableMap<Sku, Int>) {
@@ -353,6 +351,7 @@ class CheckoutSolution {
     }
 
 }
+
 
 
 

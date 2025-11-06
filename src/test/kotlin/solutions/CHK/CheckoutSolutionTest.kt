@@ -30,7 +30,7 @@ class CheckoutSolutionTest {
         Arguments.of("H", 10),
         Arguments.of("I", 35),
         Arguments.of("J", 60),
-        Arguments.of("K", 80),
+        Arguments.of("K", 70),
         Arguments.of("L", 90),
         Arguments.of("M", 15),
         Arguments.of("N", 40),
@@ -38,14 +38,14 @@ class CheckoutSolutionTest {
         Arguments.of("P", 50),
         Arguments.of("Q", 30),
         Arguments.of("R", 50),
-        Arguments.of("S", 30),
+        Arguments.of("S", 20),
         Arguments.of("T", 20),
         Arguments.of("U", 40),
         Arguments.of("V", 50),
         Arguments.of("W", 20),
-        Arguments.of("X", 90),
-        Arguments.of("Y", 10),
-        Arguments.of("Z", 50)
+        Arguments.of("X", 17),
+        Arguments.of("Y", 20),
+        Arguments.of("Z", 21)
 
 
     )
@@ -83,8 +83,6 @@ class CheckoutSolutionTest {
         Arguments.of("VVVV", 180), // 3v for 130 +1v for 50
         Arguments.of("VVVVV", 220), // 3v for 130 +2v for 90
         Arguments.of("VVVVVV", 260), // 3v for 130+ 3v for 130
-
-
         Arguments.of("STX", 45),
         Arguments.of("SXY", 45),
         Arguments.of("STXYZ", 45 + 37), // 3 FOR 45 + remaining x(17) Y(20)
@@ -104,5 +102,6 @@ class CheckoutSolutionTest {
     }
 
 }
+
 
 
