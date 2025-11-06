@@ -31,8 +31,17 @@ checkout(string) -> integer
  - param[0] = a string containing the SKUs of all the products in the basket
  - @return = an integer representing the total checkout value of the items
  */
+
+enum class Unit(price: Int) {
+    A(50),
+    B(30),
+    C(20),
+    D(15)
+}
+
 class CheckoutSolution {
     fun checkout(skus: String): Int {
-        TODO("Solution not implemented")
+        val validSkus=Unit.entries.map { it.name.single()
+        if(skus.any{it !in  }})
     }
 }
