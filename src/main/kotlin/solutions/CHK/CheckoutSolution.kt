@@ -198,7 +198,7 @@ class CheckoutSolution {
 
     }
 
-    private fun applyFreeUFromU(grouped: kotlin.collections.MutableMap<solutions.CHK.Sku, Int>) {
+    private fun applyFreeUFromU(grouped: kotlin.collections.MutableMap<Sku, Int>) {
         val uCount = grouped.getOrDefault(Sku.U, 0)
         val freeU = uCount / 4
         grouped[Sku.U] = (uCount - freeU).coerceAtLeast(0)
@@ -213,7 +213,7 @@ class CheckoutSolution {
 
     private fun applyFreeMFromN(grouped: MutableMap<Sku, Int>) {
         val nCount = grouped.getOrDefault(Sku.N, 0)
-        val mCount = grouped.getOrDefault(Sku.B, 0)
+        val mCount = grouped.getOrDefault(Sku.M, 0)
         val freeM = nCount / 3
         grouped[Sku.M] = (mCount - freeM).coerceAtLeast(0)
 
@@ -261,6 +261,7 @@ class CheckoutSolution {
     }
 
 }
+
 
 
 
