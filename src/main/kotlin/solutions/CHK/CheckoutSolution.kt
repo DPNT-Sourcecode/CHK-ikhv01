@@ -32,7 +32,7 @@ checkout(string) -> integer
  - @return = an integer representing the total checkout value of the items
  */
 
-enum class Unit(price: Int) {
+enum class Unit(val price: Int) {
     A(50),
     B(30),
     C(20),
@@ -41,12 +41,16 @@ enum class Unit(price: Int) {
 
 class CheckoutSolution {
     fun checkout(skus: String): Int {
+        if (skus.isEmpty()) return -1
         val validSkus = Unit.entries.map { it.name.single() }
         if (skus.any { it !in validSkus }) return -1
-        return 1
+        return skus.sumOf { sku ->
+            Unit.valueOf(sku.toString()).price
+        }
 
 
     }
 
 
 }
+
