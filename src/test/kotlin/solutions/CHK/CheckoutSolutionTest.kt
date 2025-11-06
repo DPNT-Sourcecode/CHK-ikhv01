@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CheckoutSolutionTest {
 
-    private fun getInvalidInputs() = listOf("a", "A1", "z", "E", "*", "Aba", "ABCD1", "ABCa")
+    private fun getInvalidInputs() = listOf("a", "A1", "z", "G", "*", "Aba", "ABCD1", "ABCa")
 
     @ParameterizedTest
     @MethodSource("getInvalidInputs")
@@ -46,7 +46,6 @@ class CheckoutSolutionTest {
         Arguments.of("EEB", 80), // 2E get 1B free
         Arguments.of("EEBB", 110), //2E get 1B free, 1B paid since it's cheaper than 2B for 45
         Arguments.of("ABCDE", 155), //50+30+20+15+40=155
-
     )
 
 
