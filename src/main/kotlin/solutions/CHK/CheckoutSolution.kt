@@ -101,7 +101,8 @@ enum class Sku(val price: Int) {
     B(30),
     C(20),
     D(15),
-    E(40);
+    E(40),
+    F(10);
 
     companion object {
         fun from(char: Char): Sku? = entries.find { it.name.single() == char }
@@ -119,6 +120,10 @@ class CheckoutSolution {
         val freeB = eCount / 2
         val bCount = grouped.getOrDefault(Sku.B, 0)
         grouped[Sku.B] = (bCount - freeB).coerceAtLeast(0)
+
+        val fCount = grouped.getOrDefault(Sku.F, 0)
+        val freeF = fCount / 3
+        grouped[Sku.F] = (fCount - freeF).coerceAtLeast(0)
 
 
         return grouped.entries.sumOf { (sku, count) ->
@@ -151,6 +156,7 @@ class CheckoutSolution {
     }
 
 }
+
 
 
 

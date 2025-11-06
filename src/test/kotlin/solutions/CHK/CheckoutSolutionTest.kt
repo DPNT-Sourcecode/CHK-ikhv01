@@ -24,7 +24,8 @@ class CheckoutSolutionTest {
         Arguments.of("B", 30),
         Arguments.of("C", 20),
         Arguments.of("D", 15),
-        Arguments.of("E", 40)
+        Arguments.of("E", 40),
+        Arguments.of("F", 10)
 
     )
 
@@ -45,7 +46,11 @@ class CheckoutSolutionTest {
         Arguments.of("AAAABBB", 255), // 3A OFFER +1A PLUS 2B OFFER PLUS 1
         Arguments.of("EEB", 80), // 2E get 1B free
         Arguments.of("EEBB", 110), //2E get 1B free, 1B paid since it's cheaper than 2B for 45
-        Arguments.of("ABCDE", 155), //50+30+20+15+40=155
+        Arguments.of("ABCDE", 155), //50+30+20+15+40=155,
+        Arguments.of("FFFFFF", 40), // 2F plus 1 free and another 2Fs plus 1 free
+        Arguments.of("EEBBFFFFFF", 150), //conbination of EEBB plus 6Fs
+
+
     )
 
 
@@ -57,3 +62,4 @@ class CheckoutSolutionTest {
     }
 
 }
+
